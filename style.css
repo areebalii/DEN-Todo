@@ -135,3 +135,46 @@ body {
 .delete-button:hover {
   background-color: #cc0000;
 }
+
+@media screen and (max-width: 600px) {
+  .todo-container {
+    margin: 50px auto;
+  }
+}
+@media screen and (max-width: 400px) {
+  .todo-container {
+    margin: 30px auto;
+  }
+  .todo-item {
+    padding: 10px 12px;
+  }
+
+  .todo-item li {
+    font-size: 16px;
+  }
+
+}
+@media screen and (max-width: 300px) {
+  .todo-container {
+    margin: 20px auto;
+  }
+  .todo-item {
+    padding: 10px 12px;
+    flex-direction: column;
+  }
+
+  .todo-item li {
+    text-align: center;
+    font-size: 16px;
+  }
+  .btn-div{
+    margin-top: 10px;
+    gap: 2px;
+  }
+
+  .todo-item button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+}
