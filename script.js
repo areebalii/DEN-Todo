@@ -52,8 +52,10 @@ function createTaskElement(taskText, isChecked = false) {
     todoItem.style.backgroundColor = checkbox.checked ? "#4bdb2a" : "#e3efff";
     if(checkbox.checked === true) {
       editButton.setAttribute("disabled", true);
+      editButton.style.cursor = "not-allowed";
     } else{
       editButton.removeAttribute("disabled");
+      editButton.style.cursor = "pointer";
     }
     setToLocalStorage();
   });
