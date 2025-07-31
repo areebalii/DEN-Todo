@@ -1,6 +1,9 @@
 const inputEl = document.getElementById("todo-input");
 const todoList = document.getElementById("todo-list");
 const addBtn = document.getElementById("add-button");
+const clearButton = document.querySelector(".clear-button");
+
+clearButton.style.display = "none";
 
 let taskBeingEdited = null;
 
@@ -42,7 +45,7 @@ function createTaskElement(taskText, isChecked = false) {
       <button class="edit-button"><i class="fas fa-edit"></i></button>
       <button class="delete-button"><i class="fas fa-trash-alt"></i></button>
     </div>
-  `;
+    `;
 
   const checkbox = todoItem.querySelector(".task-check");
   const editButton = todoItem.querySelector(".edit-button");
@@ -50,10 +53,10 @@ function createTaskElement(taskText, isChecked = false) {
 
   checkbox.addEventListener("change", () => {
     todoItem.style.backgroundColor = checkbox.checked ? "#4bdb2a" : "#e3efff";
-    if(checkbox.checked === true) {
+    if (checkbox.checked === true) {
       editButton.setAttribute("disabled", true);
       editButton.style.cursor = "not-allowed";
-    } else{
+    } else {
       editButton.removeAttribute("disabled");
       editButton.style.cursor = "pointer";
     }
@@ -63,10 +66,13 @@ function createTaskElement(taskText, isChecked = false) {
   // Set initial background
   todoItem.style.backgroundColor = isChecked ? "#4bdb2a" : "#e3efff";
 
+  // Event listeners on edit, delete buttons
   editButton.addEventListener("click", () => editTask(todoItem));
   deleteButton.addEventListener("click", () => deleteTask(todoItem));
 
+
   todoList.appendChild(todoItem);
+  clearButtonVisibility();
 }
 
 function addTask() {
@@ -88,6 +94,7 @@ function addTask() {
   createTaskElement(value);
   inputEl.value = "";
   setToLocalStorage();
+  clearButtonVisibility();
 }
 
 function editTask(task) {
@@ -95,11 +102,23 @@ function editTask(task) {
   inputEl.value = taskContent.textContent;
   taskBeingEdited = task;
   addBtn.textContent = "Update";
+  clearButtonVisibility();
 }
 
 function deleteTask(task) {
   task.remove();
   setToLocalStorage();
+  clearButtonVisibility();
+}
+
+function clearButtonVisibility() {
+  clearButton.style.display = todoList.children.length === 0 ? "none" : "block";
 }
 
 getFromLocalStorage();
+
+clearButton.addEventListener("click", () => {
+  todoList.innerHTML = "";
+  localStorage.removeItem("tasks");
+  clearButtonVisibility();
+})

@@ -136,6 +136,33 @@ body {
   background-color: #cc0000;
 }
 
+.clear-btn-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.clear-btn-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-button {
+  background-color: #3d75c2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.3s linear;
+}
+
+.clear-button:hover {
+  background-color: #3d74c2ab;
+}
+
 @media screen and (max-width: 600px) {
   .todo-container {
     margin: 50px auto;
@@ -152,7 +179,6 @@ body {
   .todo-item li {
     font-size: 16px;
   }
-
 }
 @media screen and (max-width: 300px) {
   .todo-container {
@@ -167,7 +193,7 @@ body {
     text-align: center;
     font-size: 16px;
   }
-  .btn-div{
+  .btn-div {
     margin-top: 10px;
     gap: 2px;
   }
@@ -176,5 +202,4 @@ body {
     padding: 6px 10px;
     font-size: 12px;
   }
-
 }
